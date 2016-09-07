@@ -14,5 +14,3 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require turbolinks
-//= require rails-timeago
-//= require locales/jquery.timeago.zh-CN.js

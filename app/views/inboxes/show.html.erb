@@ -9,8 +9,12 @@
     <input type="submit" name="commit" value="提交" class="inbox-send-button btn btn-primary col-xs-2" data-tb="save-topic" data-disable-with="提交中...">
   </div>
 
-  <% @messages.each do |message| %>
-    <%= render "show_item", {message: message} %>
-  <% end %>
-  <%= will_paginate @messages %>
-</div> 
+  <div class="message-list">
+    <% @messages.each do |message| %>
+      <%= render "show_item", {message: message} %>
+    <% end %>
+    <%= will_paginate @messages %>
+  </div>
+</div>
+
+

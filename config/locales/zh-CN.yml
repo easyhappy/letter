@@ -5,7 +5,3 @@ zh-CN:
   inboxes:
     cannot_send_message_to_self:     "不能给自己发私信"
     content_should_not_empty:        "内容不能为空"
-
-  time:
-    formats:
-      default: ''

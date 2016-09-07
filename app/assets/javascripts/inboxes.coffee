@@ -5,6 +5,7 @@ class Inboxes
 
   initSendMessageButton: ->
     return if $(".inbox-send-button").length == 0
+    that = this;
     $(".inbox-show-textarea").focus ->
       $(".inbox-error").html("")
       $(".inbox-notice").html("")
@@ -18,6 +19,7 @@ class Inboxes
         $(".inbox-error").html("亲, 内容太长了!")
         return
 
+
       $.ajax
         url: '/messages'
         type: "POST"
@@ -29,10 +31,41 @@ class Inboxes
           if body.status
             $(".inbox-notice").html("发送成功!")
             $(".inbox-show-textarea").val('')
+            that.appendMessageToHtml(body.message, body.is_self)
           else
             $(".inbox-error").html("发送失败: " + body.error)
         error: (res) ->
           $(".inbox-error").html("发送失败, 请稍候在试!" )
+
+  appendMessageToHtml: (message, is_self) ->
+    if is_self
+      name = "我"
+      deleteButton = "<span>
+          <a class='inbox-message-delete'  data-message-id=" + message.id + " href='javascript:void(0);'' name='delete'>
+            删除
+          </a>
+        </span>"
+    else
+      name = message.friend_name
+      deleteButton = ""
+    dom = "<div class='inbox-item inbox-item-" + message.id + "' >
+      <div class='inbox-item-header'>
+          " + name + ":
+      </div>
+      <div class='inbox-item-body'>
+        <span>
+            " + message.content  + "
+        </span>
+      </div>
+      <div class='inbox-footer'>
+        <span class='inbox-time inbox-left'>
+          " + message.created_at + "
+        </span>
+        " + deleteButton + "
+      </div>
+    </div>"
+
+    $(".message-list").prepend(dom)
 
   initDeleteMessageButton: ->
     $(".inbox-message-delete").click ->
@@ -50,6 +83,8 @@ class Inboxes
             $(".inbox-error").html("发送失败: " + body.error)
         error: (res) ->
           $(".inbox-error").html("发送失败, 请稍候在试!" )
+
+
 
 
 window._inboxHandler = new Inboxes()

@@ -22,7 +22,6 @@ gem 'will_paginate'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'rails-timeago', '~> 2.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

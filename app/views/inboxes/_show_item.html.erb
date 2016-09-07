@@ -3,10 +3,7 @@
     <% if current_user.id == message.user_id %>
       我:
     <% else %>
-      <a title="文文" class="pm-touser author-link" href="javascript:void(0)"
-      data-hovercard="p$t$wen-wen-74-94">
-        <%= message.user.username %>:
-      </a>
+      <%= message.user.username %>:
     <% end %>
   </div>
   <div class="inbox-item-body">
@@ -16,7 +13,7 @@
   </div>
   <div class="inbox-footer">
     <span class="inbox-time inbox-left">
-    <%= timeago_tag message.created_at, :lang => 'zh-CN', :nojs => true, :limit => 10.days.ago %>
+    <%= timeago message.created_at %>
     </span>
     <% if current_user.id == message.user_id %>
       <span>
