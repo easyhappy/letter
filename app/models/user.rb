@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :inboxes
+  has_many :messages
 
   def email_required?
     false

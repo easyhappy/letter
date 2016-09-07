@@ -16,10 +16,13 @@ gem 'coffee-rails', '~> 4.2'
 gem 'therubyracer', platforms: :ruby
 gem "less-rails", "~> 2.7.1"
 gem "twitter-bootstrap-rails", "~> 3.2.2"
+gem 'will_paginate'
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'rails-timeago', '~> 2.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

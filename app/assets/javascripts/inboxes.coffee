@@ -1,6 +1,7 @@
 class Inboxes
   constructor: ->
     @initSendMessageButton()
+    @initDeleteMessageButton()
 
   initSendMessageButton: ->
     return if $(".inbox-send-button").length == 0
@@ -25,13 +26,30 @@ class Inboxes
         success: (e, status, res) ->
           console.log(res["status"])
           body = jQuery.parseJSON(res.responseText)
-          
           if body.status
             $(".inbox-notice").html("发送成功!")
             $(".inbox-show-textarea").val('')
           else
             $(".inbox-error").html("发送失败: " + body.error)
         error: (res) ->
-          alert("失败了")
+          $(".inbox-error").html("发送失败, 请稍候在试!" )
+
+  initDeleteMessageButton: ->
+    $(".inbox-message-delete").click ->
+      messageId = $(this).attr("data-message-id")
+      $.ajax
+        url: '/messages/' + messageId 
+        type: "DELETE"
+        dataType: "JSON"
+        success: (e, status, res) ->
+          console.log(res["status"])
+          body = jQuery.parseJSON(res.responseText)
+          if body.status
+            window.location.reload()
+          else
+            $(".inbox-error").html("发送失败: " + body.error)
+        error: (res) ->
+          $(".inbox-error").html("发送失败, 请稍候在试!" )
+
 
 window._inboxHandler = new Inboxes()

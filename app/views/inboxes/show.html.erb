@@ -3,13 +3,14 @@
 
 <div class="col-md-8 col-md-offset-2 inbox-show-list">
   <div class="inbox-show-input">
-    <textarea class="inbox-show-textarea" raw=100 col=100 style="width: 100%; height: 80px"></textarea>
+    <textarea class="inbox-show-textarea" style="width: 100%; height: 80px"></textarea>
     <div class="inbox-error"></div>
     <div class="inbox-notice"></div>
     <input type="submit" name="commit" value="提交" class="inbox-send-button btn btn-primary col-xs-2" data-tb="save-topic" data-disable-with="提交中...">
   </div>
 
-  <% 10.times.each do |i| %>
-    <%= render "show_item" %>
+  <% @messages.each do |message| %>
+    <%= render "show_item", {message: message} %>
   <% end %>
+  <%= will_paginate @messages %>
 </div> 

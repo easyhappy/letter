@@ -24,7 +24,7 @@ body {
 
   .inbox-footer {
     margin: 10px 10px 0 10px;
-    text-align: right;
+    text-align: left;
     line-height: 30px;
     
     .inbox-time{
@@ -33,11 +33,7 @@ body {
       font-weight: 400;
     }
 
-    .inbox-left{
-      float: left;
-    }
-
-    .inbox-show-detail, .inbox-reply, .inbox-delete{
+    .inbox-show-detail, .inbox-reply, .inbox-message-delete{
       color: #259;
       font-size: 12px;
       font-weight: 400;
