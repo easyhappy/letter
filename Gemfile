@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'devise', "~> 4.0.3"
+
 group :development, :test do
   gem 'pry-rails', "~> 0.3.4"
   gem 'pry-nav', "~> 0.2.4"
