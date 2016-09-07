@@ -1,10 +1,12 @@
 <%= stylesheet_link_tag    'inboxes', media: 'all', 'data-turbolinks-track' => true %>
+<%= javascript_include_tag 'inboxes', 'data-turbolinks-track' => true, "defer" => "defer" %>
+
 <div class="col-md-8 col-md-offset-2 inbox-show-list">
   <div class="inbox-show-input">
     <textarea class="inbox-show-textarea" raw=100 col=100 style="width: 100%; height: 80px"></textarea>
-    <div>
-      <input type="submit" name="commit" value="提交" class="btn btn-primary col-xs-2" data-tb="save-topic" data-disable-with="提交中...">
-    </div>
+    <div class="inbox-error"></div>
+    <div class="inbox-notice"></div>
+    <input type="submit" name="commit" value="提交" class="inbox-send-button btn btn-primary col-xs-2" data-tb="save-topic" data-disable-with="提交中...">
   </div>
 
   <% 10.times.each do |i| %>

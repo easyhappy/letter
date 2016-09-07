@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root "inboxes#index"
 
   resources :inboxes
+  resources :messages
 end

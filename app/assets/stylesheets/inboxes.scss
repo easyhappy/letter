@@ -56,4 +56,16 @@ body {
     border-radius: 0px 3px 3px 3px;
     border-color: #ddd;
   }
+
+  .inbox-error{
+    text-align: left;
+    color: rgb(195, 65, 47);
+    margin: 5px 0 5px 0;
+  }
+
+  .inbox-notice{
+   text-align: left; 
+   color: #1B8909;
+   margin: 5px 0 5px 0;
+  }
 }
