@@ -11,7 +11,7 @@ class InboxesController < ApplicationController
     @inbox = current_user.inboxes.find(params[:id])
     @inbox.reset_unread_count
 
-    @messages = Message.inbox_messages(@inbox).paginate(:page => params[:page] || 1, :per_page => params[:per] || 10)
+    @messages = Message.inbox_messages(@inbox).includes(:user, :friend).paginate(:page => params[:page] || 1, :per_page => params[:per] || 10)
   end
 
   def destroy

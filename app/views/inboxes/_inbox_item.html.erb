@@ -1,16 +1,14 @@
 <div class="inbox-item inbox-item-<%= inbox.id %>" >
   <div class="inbox-item-header">
     <% lastest_message = Message.inbox_messages(inbox).first %>
-    <% if current_user.id == lastest_message.user_id %>
+    <% if lastest_message and current_user.id == lastest_message.user_id %>
       我发送给
-      <a title="" class="pm-touser author-link" href="javascript:void(0)"
-      data-hovercard="p$t$wen-wen-74-94">
-        <%= lastest_message.friend.username %>
+      <a title="" class="pm-touser author-link" href="javascript:void(0)">
+        <%= inbox.friend.username %>
       </a>
     <% else %>
-      <a title="" class="pm-touser author-link" href="javascript:void(0)"
-      data-hovercard="p$t$wen-wen-74-94">
-        <%= lastest_message.user.username %>
+      <a title="" class="pm-touser author-link" href="javascript:void(0)">
+        <%= inbox.friend.username %>
       </a>
       发送给我
     <% end %>
@@ -18,12 +16,12 @@
   </div>
   <div class="inbox-item-body">
     <span>
-      <%= simple_format lastest_message.content %>
+      <%= simple_format lastest_message.try :content %>
     </span>
   </div>
   <div class="inbox-footer">
     <span class="inbox-time inbox-left">
-      <%= timeago lastest_message.created_at %>
+      <%= timeago (lastest_message.try(:created_at) || inbox.updated_at ) %>
     </span>
     <span class="inbox-bull unread-count unread-count-<%= inbox.id %>">
       <%= inbox.unread_count %>条未读
