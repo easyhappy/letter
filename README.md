@@ -71,3 +71,11 @@ fab init_ubuntu:hosts="root@120.76.242.234"
 
 ![](doc/fabric_deploy.png)
 
+
+### Todo list
+
+- 添加测试
+- 404页面
+- 优化页面
+- 发送消息频率限制
+- bla bla ...
