@@ -10,6 +10,9 @@ zh-CN:
     username_should_not_empty:       "名称不能为空"
     username_has_existed:             "名称已存在"
 
+  messages:
+    content_should_not_empty:        "消息内部不能为空"
+
   errors:
     messages:
       not_saved: "保存失败"
@@ -20,3 +23,4 @@ zh-CN:
           attributes:
             password:
               too_short: "密码太短"
+

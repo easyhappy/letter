@@ -15,11 +15,11 @@ set :bundle_binstubs, nil
 
 set :pty, true
 
-set :linked_files, %w{config/database.yml config/secrets.yml config/sidekiq.yml config/redis.yml config/mongoid.yml}
+set :linked_files, %w{config/database.yml config/secrets.yml  config/redis.yml config/cable.yml}
 
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system client/node_modules}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
 
-set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH", :NODE_ENV => 'production'}
+set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH"}
 
 set :ssh_options, {:forward_agent => true}
 
