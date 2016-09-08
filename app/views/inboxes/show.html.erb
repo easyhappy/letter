@@ -7,7 +7,7 @@
     <textarea class="inbox-show-textarea" style="width: 100%; height: 80px"></textarea>
     <div class="inbox-error"></div>
     <div class="inbox-notice"></div>
-    <input type="submit" name="commit" value="提交" class="inbox-send-button btn btn-primary col-xs-2" data-tb="save-topic" data-disable-with="提交中...">
+    <input type="submit" name="commit" value="提交" class="inbox-send-button btn btn-primary col-xs-2" data-tb="save-topic" data-username="<%= @inbox.friend.username %>" data-disable-with="提交中...">
   </div>
 
   <div class="message-list">

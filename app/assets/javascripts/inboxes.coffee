@@ -24,7 +24,7 @@ class Inboxes
       $.ajax
         url: '/messages'
         type: "POST"
-        data: {username: "kaka", content: content}
+        data: {username: $(this).attr("data-username"), content: content}
         dataType: "JSON"
         success: (e, status, res) ->
           console.log(res["status"])

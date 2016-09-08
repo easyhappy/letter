@@ -47,6 +47,10 @@
 .inbox-show-list{
   width: 80%;
   margin-left: 10%;
+
+  .inbox-show-input{
+    margin-bottom: 50px;
+  }
   .inbox-show-textarea{
     border-radius: 0px 3px 3px 3px;
     border-color: #ddd;

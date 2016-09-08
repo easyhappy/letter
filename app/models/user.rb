@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :inboxes
+  has_many :inboxes, -> { order("updated_at desc")}
   has_many :messages
   has_many :friends, through: :inboxes
 
