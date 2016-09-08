@@ -25,6 +25,12 @@
     <span class="inbox-time inbox-left">
       <%= timeago lastest_message.created_at %>
     </span>
+    <span class="inbox-bull unread-count unread-count-<%= inbox.id %>">
+      <%= inbox.unread_count %>条未读
+    </span>
+    <span class="inbox-bull">
+      |
+    </span>
     <%= link_to "查看详情", inbox_path(inbox), class: "inbox-show-detail" %>
     <span class="inbox-bull">
       |
