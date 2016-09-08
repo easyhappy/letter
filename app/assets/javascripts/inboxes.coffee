@@ -130,33 +130,34 @@ class Inboxes
   appendMessageToHtml: (message, is_self) ->
     if $(".inbox-item-#{message.id}").length > 0
       return
-
     if is_self
       name = "我"
       deleteButton = "<span>
-          <a class='inbox-message-delete'  data-message-id=" + message.id + " href='javascript:void(0);'' name='delete'>
-            删除
-          </a>
-        </span>"
+                        <a class='inbox-message-delete'  data-message-id=#{message.id} href='javascript:void(0);'' name='delete'>
+                          删除
+                        </a>
+                      </span>
+                      "
     else
       name = message.friend_username
       deleteButton = ""
-    dom = "<div class='inbox-item inbox-item-" + message.id + "' >
-      <div class='inbox-item-header'>
-          " + name + ":
-      </div>
-      <div class='inbox-item-body'>
-        <span>
-            " + message.content  + "
-        </span>
-      </div>
-      <div class='inbox-footer'>
-        <span class='inbox-time inbox-left'>
-          " + message.created_at + "
-        </span>
-        " + deleteButton + "
-      </div>
-    </div>"
+    
+    dom = "<div class='inbox-item inbox-item-#{message.id}'>
+            <div class='inbox-item-header'>
+                #{name}:
+            </div>
+            <div class='inbox-item-body'>
+              <span>
+                  #{message.content}
+              </span>
+            </div>
+            <div class='inbox-footer'>
+              <span class='inbox-time inbox-left'>
+                #{message.created_at}
+              </span>
+              #{deleteButton}
+            </div>
+          </div>"
 
     $(".message-list").prepend(dom)
 
