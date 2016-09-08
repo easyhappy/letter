@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :friends, through: :inboxes
 
+  validates :username, presence: {message: I18n.t("users.username_should_not_empty")}, uniqueness: {message: I18n.t("users.username_has_existed")}
   scope :users_without_me, -> (user) { where.not(:id => [user.id]).order("created_at desc") }
 
   def email_required?

@@ -21,6 +21,8 @@
               <%= f.label :password %><br />
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
             </div>
+
+            <span class="pull-right">未注册, 请<%= link_to "注册", new_user_registration_path %></span>
             <div class="actions">
               <%= f.submit "登录", class: "btn btn-lg btn-success btn-block" %>
             </div>

@@ -1,7 +1,22 @@
 zh-CN:
   common:
-    user_not_exist: "用户不存在"
+    user_not_exist:                 "用户不存在"
 
   inboxes:
     cannot_send_message_to_self:     "不能给自己发私信"
     content_should_not_empty:        "内容不能为空"
+
+  users:
+    username_should_not_empty:       "名称不能为空"
+    username_has_existed:             "名称已存在"
+
+  errors:
+    messages:
+      not_saved: "保存失败"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "密码太短"
