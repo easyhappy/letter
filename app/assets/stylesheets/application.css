@@ -14,3 +14,22 @@
  *= require bootstrap_and_overrides
  *= require_self
  */
+
+
+.main-content{
+  width: 80%;
+  margin-left: 10%;
+  margin-top: 20px;
+}
+
+body {
+  background: #e9eaed;
+  color: #222527;
+}
+
+#wrapper .navbar .navbar-header{
+  float: none;
+  width: 955px;
+  margin-right: auto;
+  margin-left: auto;
+}

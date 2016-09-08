@@ -1,8 +1,9 @@
 <%= stylesheet_link_tag    'inboxes', media: 'all', 'data-turbolinks-track' => true %>
 <%= javascript_include_tag 'inboxes', 'data-turbolinks-track' => true, "defer" => "defer" %>
 
-<div class="inbox-show-list">
+<div class="inbox-show-list main-content">
   <div class="inbox-show-input">
+    <h4>发消息给 <%= @inbox.friend.username %>:</h4>
     <textarea class="inbox-show-textarea" style="width: 100%; height: 80px"></textarea>
     <div class="inbox-error"></div>
     <div class="inbox-notice"></div>
