@@ -2,6 +2,7 @@ class Inboxes
   constructor: ->
     @initSendMessageButton()
     @initDeleteMessageButton()
+    @initUserSendMessageButton()
 
   initSendMessageButton: ->
     return if $(".inbox-send-button").length == 0
@@ -84,6 +85,45 @@ class Inboxes
         error: (res) ->
           $(".inbox-error").html("发送失败, 请稍候在试!" )
 
+
+  initUserSendMessageButton: ->
+    $(".send-message").click -> 
+      $(".modal-title").html("发送消息给" + $(this).attr("data-username"))
+      $(".check-user-send-message-button").attr("data-username", $(this).attr("data-username"))
+      
+      $(".user-send-message-notice").html("")
+      $(".user-send-message-error").html("")
+
+      $(".user-send-message").modal('show')
+
+    $(".message-body-input").focus ->
+      $(".user-send-message-error").html("")
+      $(".user-send-message-notice").html("")
+
+    $(".check-user-send-message-button").click ->
+      content = $(".message-body-input").val()
+      if content.length == 0
+        $(".user-send-message-error").html("亲, 内容不能为空!")
+        return
+      if content.length > 200
+        $(".user-send-message-error").html("亲, 内容太长了!")
+        return
+
+      $.ajax
+        url: '/messages'
+        type: "POST"
+        data: {username: $(this).attr("data-username"), content: content}
+        dataType: "JSON"
+        success: (e, status, res) ->
+          console.log(res["status"])
+          body = jQuery.parseJSON(res.responseText)
+          if body.status
+            $(".user-send-message-notice").html("发送成功!")
+            $(".message-body-input").val("")
+          else
+            $(".user-send-message-error").html("发送失败: " + body.error)
+        error: (res) ->
+          $(".user-send-message-error").html("发送失败, 请稍候在试!" )
 
 
 

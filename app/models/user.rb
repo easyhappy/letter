@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   has_many :inboxes
   has_many :messages
+  has_many :friends, through: :inboxes
+
+  scope :users_without_me, -> (user) { where.not(:id => [user.id]).order("created_at desc") }
 
   def email_required?
     false

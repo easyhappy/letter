@@ -1,39 +1,35 @@
 <div class="inbox-item" >
   <div class="inbox-item-header">
-    我发送给
-    <a title="文文" class="pm-touser author-link" href="/people/wen-wen-74-94"
-    data-hovercard="p$t$wen-wen-74-94">
-      文文
-    </a>
+    <% lastest_message = Message.inbox_messages(inbox).first %>
+    <% if current_user.id == lastest_message.user_id %>
+      我发送给
+      <a title="" class="pm-touser author-link" href="javascript:void(0)"
+      data-hovercard="p$t$wen-wen-74-94">
+        <%= inbox.friend.username %>
+      </a>
+    <% else %>
+      <a title="" class="pm-touser author-link" href="javascript:void(0)"
+      data-hovercard="p$t$wen-wen-74-94">
+        <%= inbox.user.username %>
+      </a>
+      发送给我
+    <% end %>
     ：
   </div>
   <div class="inbox-item-body">
     <span>
-        &nbsp;&nbsp;&nbsp;付费授权功能今天开始在网页端公测啦！这个功能将带来从申请、通知、支付、确认授权到授权管理等一系列便捷体验。
-        <br/>
-        <br/>
-        通过各种维权工作的开展，我们看到越来越多的内容使用方开始联系作者申请授权。我们希望这个产品可以进一步引导大家规范使用内容，为每一位知乎的原创者带来更多的尊重和收益。
+      <%= simple_format lastest_message.content %>
     </span>
   </div>
   <div class="inbox-footer">
     <span class="inbox-time inbox-left">
-      今天 15:49
+      <%= timeago lastest_message.created_at %>
     </span>
-    <a class="inbox-show-detail" href="">
-      查看详情
-    </a>
+    <%= link_to "查看详情", inbox_path(inbox), class: "inbox-show-detail" %>
     <span class="inbox-bull">
       |
     </span>
-    <a class="inbox-reply" href="javascript:;" name="reply">
-      回复
-    </a>
-    <span class="inbox-bull">
-      |
-    </span>
-    <a class="inbox-delete" href="javascript:;" name="delete">
-      删除
-    </a>
+    <%= link_to "删除", inbox_path(inbox), method: "delete", "data-confirm" => "确认删除吗?" %>
   </div>
 </div>
 

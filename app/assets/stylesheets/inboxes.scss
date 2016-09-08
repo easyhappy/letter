@@ -3,6 +3,13 @@ body {
   color: #222527;
 }
 
+#wrapper .navbar .navbar-header{
+  float: none;
+  width: 955px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .inbox-list, .inbox-show-list{
   margin-top: 20px;
 
@@ -33,7 +40,7 @@ body {
       font-weight: 400;
     }
 
-    .inbox-show-detail, .inbox-reply, .inbox-message-delete{
+    .inbox-show-detail, .inbox-message-delete{
       color: #259;
       font-size: 12px;
       font-weight: 400;
@@ -48,6 +55,8 @@ body {
 }
 
 .inbox-show-list{
+  width: 80%;
+  margin-left: 10%;
   .inbox-show-textarea{
     border-radius: 0px 3px 3px 3px;
     border-color: #ddd;
@@ -66,6 +75,7 @@ body {
   }
 
 }
+
 .inbox-template{
   display: none;
 }

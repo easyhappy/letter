@@ -6,7 +6,7 @@ class MessagesController < ApplicationController
     if status
       render :message
     else
-      render json: {status: false, error: message}
+      render json: {status: false, error: @message}
     end
   end
 

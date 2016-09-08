@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "sessions"}
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
   root "inboxes#index"
 
-  resources :inboxes
-  resources :messages
+  resources :inboxes,  only:     [:index, :create, :destroy, :show]
+  resources :messages, only:     [:create, :destroy]
+  resources :users,    only:     [:index]
 end
