@@ -1,0 +1,10 @@
+defaults: &defaults
+  host: 127.0.0.1
+  port: 6379
+  password: b840fc02d524045429941cc15f59e41cb7be6c52
+development:
+  <<: *defaults
+test:
+  <<: *defaults
+production:
+  <<: *defaults

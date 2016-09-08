@@ -13,5 +13,9 @@ module Letter
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = 'zh-CN'
+    config.before_configuration do
+      $REDIS_CONFIG = ::YAML::load(File.read(File.join(Rails.root.to_s, 'config/redis.yml')))[Rails.env.to_s]
+      config.cache_store = :redis_store, $REDIS_CONFIG['cache']
+    end
   end
 end

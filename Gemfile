@@ -36,6 +36,13 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise', "~> 4.0.3"
 
+gem 'redis'
+gem 'hiredis'
+# Redis 命名空间
+gem 'redis-namespace'
+gem 'redis-activesupport'
+gem 'redis-store'
+
 group :development, :test do
   gem 'pry-rails', "~> 0.3.4"
   gem 'pry-nav', "~> 0.2.4"
