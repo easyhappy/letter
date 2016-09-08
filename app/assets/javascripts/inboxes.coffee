@@ -1,8 +1,40 @@
+#= require action_cable
+#= require_self
+#= require_tree ./channels
+
+window.App =
+  current_user_id: 1
+  cable: ActionCable.createConsumer()
+
 class Inboxes
   constructor: ->
     @initSendMessageButton()
     @initDeleteMessageButton()
     @initUserSendMessageButton()
+    @initActionCable()
+
+  initActionCable: ->
+    console.log("ddddd")
+    window.notificationChannel = App.cable.subscriptions.create "LettersChannel",
+      connected: ->
+        console.log("connnect...")
+        setTimeout =>
+            @subscribe()
+            $(window).on 'unload', -> window.notificationChannel.unsubscribe()
+            $(document).on 'page:change', -> window.notificationChannel.subscribe()
+          , 1000
+      received: (data) ->
+        #@receivedNotificationCount(data)
+        console.log("recived")
+        console.log(data)
+
+      subscribe: ->
+        @perform 'subscribed'
+        console.log("subscribed")
+
+      unsubscribe: ->
+        @perform 'unsubscribed'
+        console.log("unsubscribed")
 
   initSendMessageButton: ->
     return if $(".inbox-send-button").length == 0
@@ -124,7 +156,5 @@ class Inboxes
             $(".user-send-message-error").html("发送失败: " + body.error)
         error: (res) ->
           $(".user-send-message-error").html("发送失败, 请稍候在试!" )
-
-
 
 window._inboxHandler = new Inboxes()
