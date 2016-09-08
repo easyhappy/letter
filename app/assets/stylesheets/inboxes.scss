@@ -3,9 +3,11 @@
 
   .inbox-item{
     background: #fff;
-    margin-top: 45px;
   }
 
+  .inbox-item:not(:nth-child(1)){
+    margin-top: 45px;
+  }
   .inbox-item-header{
     position: relative;
     margin: 0 0 0px 10px;
