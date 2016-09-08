@@ -11,6 +11,10 @@
     <% end %>
   </head>
   <body>
+    <% if @current_page %>
+      <div class="current-page" data-current-page=<%= @current_page %>></div>
+    <% end %>
+
     <% if current_user %>
       <%= render "layouts/header" %> 
     <% end %>

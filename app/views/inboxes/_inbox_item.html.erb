@@ -1,16 +1,16 @@
-<div class="inbox-item" >
+<div class="inbox-item inbox-item-<%= inbox.id %>" >
   <div class="inbox-item-header">
     <% lastest_message = Message.inbox_messages(inbox).first %>
     <% if current_user.id == lastest_message.user_id %>
       我发送给
       <a title="" class="pm-touser author-link" href="javascript:void(0)"
       data-hovercard="p$t$wen-wen-74-94">
-        <%= inbox.friend.username %>
+        <%= lastest_message.friend.username %>
       </a>
     <% else %>
       <a title="" class="pm-touser author-link" href="javascript:void(0)"
       data-hovercard="p$t$wen-wen-74-94">
-        <%= inbox.user.username %>
+        <%= lastest_message.user.username %>
       </a>
       发送给我
     <% end %>
@@ -38,5 +38,3 @@
     <%= link_to "删除", inbox_path(inbox), method: "delete", "data-confirm" => "确认删除吗?" %>
   </div>
 </div>
-
-<div class="divider"></div>

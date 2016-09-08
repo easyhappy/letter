@@ -5,4 +5,5 @@
   <% @inboxes.each do |inbox| %>
     <%= render "inbox_item", inbox: inbox %>
   <% end %>
+  <%= will_paginate @inboxes %>
 </div> 

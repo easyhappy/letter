@@ -3,7 +3,6 @@
 #= require_tree ./channels
 
 window.App =
-  current_user_id: 1
   cable: ActionCable.createConsumer()
 
 class Inboxes
@@ -14,27 +13,77 @@ class Inboxes
     @initActionCable()
 
   initActionCable: ->
-    console.log("ddddd")
+    that = @
     window.notificationChannel = App.cable.subscriptions.create "LettersChannel",
       connected: ->
-        console.log("connnect...")
         setTimeout =>
             @subscribe()
             $(window).on 'unload', -> window.notificationChannel.unsubscribe()
             $(document).on 'page:change', -> window.notificationChannel.subscribe()
           , 1000
       received: (data) ->
-        #@receivedNotificationCount(data)
-        console.log("recived")
+        that.receivedNotificationData(data)
         console.log(data)
 
       subscribe: ->
         @perform 'subscribed'
-        console.log("subscribed")
 
       unsubscribe: ->
         @perform 'unsubscribed'
-        console.log("unsubscribed")
+
+  receivedNotificationData: (data) ->
+    if $(".current-page").length > 0 && $(".current-page").attr("data-current-page") == "inbox_list"
+      @dealWithNotificationAtInboxListPage(data)
+
+
+  dealWithNotificationAtInboxListPage: (data) -> 
+    itemClass = ".inbox-item-#{data.inbox.id}"
+    console.log(itemClass)
+    if $(itemClass).length > 0
+      $("#{itemClass} .unread-count").html("#{data.inbox.unread_count}条未读")
+      $("#{itemClass} .inbox-time").html(data.inbox.created_at)
+      $("#{itemClass} .inbox-item-body span").html(data.message.content)
+      unless $(".inbox-list").children().first().hasClass("inbox-item-#{data.inbox.id}")
+        newItem = $(itemClass).clone()
+        $(itemClass).remove()
+        $(".inbox-list").prepend(newItem)
+    else
+      @addMessageToInboxListPage(data)
+
+  addMessageToInboxListPage: (data) ->
+    #### 此处需要优化
+    html = "<div class='inbox-item inbox-item-#{data.inbox.id}' > \
+              <div class='inbox-item-header'> \
+                <a title='' class='pm-touser author-link' href=\"javascript:void(0)\"> \
+                  #{ data.message.username } \
+                </a>  \
+                发送给我：\
+             </div> \
+            <div class=\"inbox-item-body\"> \
+              <span> \
+                #{data.message.content} \
+              </span> \
+            </div> \
+            <div class=\"inbox-footer\"> \
+              <span class=\"inbox-time inbox-left\"> \
+                #{ data.inbox.created_at } \
+              </span> \
+              <span class=\"inbox-bull unread-count unread-count-#{data.inbox.id}\"> \
+                #{data.inbox.unread_count}条未读 \
+              </span> \
+              <span class=\"inbox-bull\"> \
+                | \
+              </span> \
+              <a class=\"inbox-show-detail\" href=\"/inboxes/#{data.inbox.id}\">查看详情</a> \
+              <span class=\"inbox-bull\"> \
+                | \
+              </span> \
+              <a data-confirm=\"确认删除吗?\" rel=\"nofollow\" data-method=\"delete\" href=\"/inboxes/#{data.inbox.id}\">删除</a> \
+            </div> \
+          </div>"
+
+    $(".inbox-list").prepend(html)
+
 
   initSendMessageButton: ->
     return if $(".inbox-send-button").length == 0
@@ -51,7 +100,6 @@ class Inboxes
       if content.length > 200
         $(".inbox-error").html("亲, 内容太长了!")
         return
-
 
       $.ajax
         url: '/messages'
