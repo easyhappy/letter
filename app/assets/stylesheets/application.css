@@ -33,3 +33,8 @@ body {
   margin-right: auto;
   margin-left: auto;
 }
+
+.inbox-center-navbar i.fa-comment{
+  color: red;
+  display: none;
+}

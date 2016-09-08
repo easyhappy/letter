@@ -34,9 +34,13 @@ class Inboxes
   receivedNotificationData: (data) ->
     if $(".current-page").length > 0 && $(".current-page").attr("data-current-page") == "inbox_list"
       @dealWithNotificationAtInboxListPage(data)
+      return
 
     if $(".current-page").length > 0 && $(".current-page").attr("data-current-page") == "inbox_show"
       @dealWithNotificationAtInboxShowPage(data)
+      return
+
+    $(".inbox-center-navbar i.fa-comment").show()
 
   dealWithNotificationAtInboxListPage: (data) -> 
     itemClass = ".inbox-item-#{data.inbox.id}"
@@ -141,7 +145,7 @@ class Inboxes
     else
       name = message.friend_username
       deleteButton = ""
-    
+
     dom = "<div class='inbox-item inbox-item-#{message.id}'>
             <div class='inbox-item-header'>
                 #{name}:
