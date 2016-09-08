@@ -22,7 +22,7 @@ class Message < ApplicationRecord
       inbox: { id: self.friend_inbox.id,            unread_count: self.friend_inbox.unread_count,
                friend_username: self.user.username, created_at:   self.timeago(self.friend_inbox.updated_at)
               },
-      message: {id: self.id, content: self.content, username: self.user.username}
+      message: {id: self.id, content: self.content, username: self.user.username, friend_username: self.friend.username, created_at: self.timeago(self.created_at)}
     }
 
     ActionCable.server.broadcast "letter_notifications_#{self.friend.id}", options 

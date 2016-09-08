@@ -35,6 +35,8 @@ class Inboxes
     if $(".current-page").length > 0 && $(".current-page").attr("data-current-page") == "inbox_list"
       @dealWithNotificationAtInboxListPage(data)
 
+    if $(".current-page").length > 0 && $(".current-page").attr("data-current-page") == "inbox_show"
+      @dealWithNotificationAtInboxShowPage(data)
 
   dealWithNotificationAtInboxListPage: (data) -> 
     itemClass = ".inbox-item-#{data.inbox.id}"
@@ -84,6 +86,13 @@ class Inboxes
 
     $(".inbox-list").prepend(html)
 
+  dealWithNotificationAtInboxShowPage: (data) ->
+    console.log("走到这里了dfsadfasdf")
+    console.log(parseInt($(".inbox-show-list").attr("data-inbox-id")))
+    console.log(data.inbox.id)
+    if parseInt($(".inbox-show-list").attr("data-inbox-id")) == data.inbox.id
+      console.log("走到这里了")
+      @appendMessageToHtml(data.message, false)
 
   initSendMessageButton: ->
     return if $(".inbox-send-button").length == 0
@@ -119,6 +128,9 @@ class Inboxes
           $(".inbox-error").html("发送失败, 请稍候在试!" )
 
   appendMessageToHtml: (message, is_self) ->
+    if $(".inbox-item-#{message.id}").length > 0
+      return
+
     if is_self
       name = "我"
       deleteButton = "<span>
@@ -127,7 +139,7 @@ class Inboxes
           </a>
         </span>"
     else
-      name = message.friend_name
+      name = message.friend_username
       deleteButton = ""
     dom = "<div class='inbox-item inbox-item-" + message.id + "' >
       <div class='inbox-item-header'>

@@ -5,6 +5,7 @@ class InboxesController < ApplicationController
   end
 
   def show
+    @current_page = "inbox_show"
     @inbox = current_user.inboxes.find(params[:id])
     @inbox.reset_unread_count
 
