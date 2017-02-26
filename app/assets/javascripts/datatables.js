@@ -10503,7 +10503,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"bSort": true,
+		"bSort": false,
 
 
 		/**
@@ -10523,7 +10523,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"bSortMulti": true,
+		"bSortMulti": false,
 
 
 		/**
@@ -10565,7 +10565,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"bSortClasses": true,
+		"bSortClasses": false,
 
 
 		/**
