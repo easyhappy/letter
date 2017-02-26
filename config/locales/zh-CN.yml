@@ -7,8 +7,8 @@ zh-CN:
     content_should_not_empty:        "内容不能为空"
 
   users:
-    username_should_not_empty:       "名称不能为空"
-    username_has_existed:             "名称已存在"
+    name_should_not_empty:       "名称不能为空"
+    name_has_existed:             "名称已存在"
 
   messages:
     content_should_not_empty:        "消息内部不能为空"

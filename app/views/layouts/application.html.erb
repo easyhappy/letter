@@ -31,40 +31,41 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-  <body>
-    <div class="navbar -dark -fixed-top -has-5-items">
-      <div class="navbar-wrapper">
-        <a class="navbar-brand" href="index.html"><span class="hidden-sm-up">J</span> <span class="hidden-xs-down">Joysee</span></a>
-        <% if current_user %>
-          <ul class="navbar-nav -right">
-            <li>
-              <a class="has-morph-dropdown" href="#notifications-dropdown"><i class="pe pe-bell"></i> <span class="navbar-item-count">2</span></a>
-            </li>
-            <li>
-              <a class="has-morph-dropdown" href="#applications-dropdown"><i class="pe pe-keypad"></i></a>
-            </li>
-            <li class="navbar-profile">
-              <a class="has-morph-dropdown" href="#profile-dropdown">
-              <!-- Image -->
-               <img src="assets/img/users/default.jpg"></a>
-            </li>
-            <li id="right-sidebar-toggle">
-              <a href="javascript:void(0);"><i class="pe pe-edit -rotate-90"></i></a>
-            </li>
-          </ul>
-        <% end %>
-        <div class="morph-dropdown-wrapper -dark -right">
-          <div class="morph-dropdown-list -links"></div>
-        </div>
+<body>
+  <div class="navbar -dark -fixed-top -has-5-items">
+    <div class="navbar-wrapper">
+      <a class="navbar-brand" href="index.html"><span class="hidden-sm-up">J</span> <span class="hidden-xs-down">Joysee后台</span></a>
+      <% if current_user %>
+        <ul class="navbar-nav -right">
+          <li>
+            <a class="has-morph-dropdown" href="#notifications-dropdown"><i class="pe pe-bell"></i> <span class="navbar-item-count">2</span></a>
+          </li>
+          <li>
+            <a class="has-morph-dropdown" href="#applications-dropdown"><i class="pe pe-keypad"></i></a>
+          </li>
+          <li class="navbar-profile">
+            <a class="has-morph-dropdown" href="#profile-dropdown">
+            <!-- Image -->
+             <img src="<%= current_user.avatar_url%>"></a>
+          </li>
+          <li id="right-sidebar-toggle">
+            <a href="javascript:void(0);"><i class="pe pe-edit -rotate-90"></i></a>
+          </li>
+        </ul>
+      <% end %>
+      <div class="morph-dropdown-wrapper -dark -right">
+        <div class="morph-dropdown-list -links"></div>
       </div>
     </div>
-    <div class="content -dark -without-sidebar">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col -xs-12">
-          <%= yield %>
-        </div>
+  </div>
+  <%= render "layouts/sidebar" %>
+  <div class="content -dark -without-sidebar">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col -xs-12">
+        <%= yield %>
       </div>
     </div>
-  </body>
+  </div>
+</body>
 </html>

@@ -11,7 +11,7 @@ development:
   reconnect: true
   database: letter_devlopment
   pool: 5
-  username: root
+  name: root
   password:
   host: localhost
 
@@ -24,6 +24,6 @@ test:
   reconnect: true
   database: letter_test
   pool: 5
-  username: root
+  name: root
   password:
   host: localhost
