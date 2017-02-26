@@ -1,41 +1,43 @@
 # config valid only for Capistrano 3.1
 lock '3.5.0'
-set :application, 'letter'
 
-set :repo_url, "git@github.com:easyhappy/letter.git"
+set :application, 'yuejian'
+set :repo_url, 'git@git.coding.net:andyhu/yuejian.git'
+set :deploy_to, '/home/deployer/apps/yuejian'
+set :deploy_user, :deployer
 
-set :deploy_to, '/home/deployer/apps/letter'
+set :log_level, :debug
+set :scm, :git
+set :format, :pretty
 
-set :rbenv_type, :user # or :system, depends on your rbenv setup
-set :rbenv_prefix, "RBENV_ROOT=#{fetch(:rbenv_path)} RBENV_VERSION=#{fetch(:rbenv_ruby)} #{fetch(:rbenv_path)}/bin/rbenv exec"
-set :rbenv_map_bins, %w{rake gem bundle ruby rails}
-set :rbenv_roles, :all # default value
+set :linked_files, %w{config/database.yml}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system private_imgs amazing_images}
 
-set :bundle_binstubs, nil
+set :rvm_type, :system
+set :rvm_ruby_version, '2.3.3'
+set :rvm_roles, [:app, :web, :db]
 
+set :rails_env, "production"
+
+set :keep_releases, 10
 set :pty, true
+set :resque_environment_task, true
 
-set :linked_files, %w{config/database.yml config/secrets.yml  config/redis.yml config/cable.yml}
 
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
-
-set :default_env, { path: "~/.rbenv/shims:~/.rbenv/bin:$PATH"}
-
-set :ssh_options, {:forward_agent => true}
-
-set :keep_releases, 5
-
+set :ssh_options, {
+  :forward_agent => true,
+  keys: %w(/Users/andyhu/.ssh/id_rsa_2)
+}
 
 namespace :deploy do
-  after :publishing, 'unicorn:restart'
+  # desc "Update the crontab file"
+  # task :update_crontab do
+  #   on roles :app do
+  #     within current_path do
+  #       execute :bundle, :exec, "whenever --update-crontab #{fetch(:application)} --set environment=#{fetch(:rails_env)}"
+  #     end
+  #   end
+  # end
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      with rails_env: fetch(:rails_env) do
-        within release_path do
-          execute :'bin/rake', 'tmp:clear'
-        end
-      end
-    end
-  end
+  #after :publishing, :update_crontab
 end

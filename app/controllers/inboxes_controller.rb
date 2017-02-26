@@ -1,8 +1,8 @@
 class InboxesController < ApplicationController
   def index
-    @current_page = "inbox_list"
-
-    @inboxes = current_user.inboxes.paginate(:page => params[:page] || 1, :per_page => params[:per] || 10)
+    #@current_page = "inbox_list"
+    #@inboxes = current_user.inboxes.paginate(:page => params[:page] || 1, :per_page => params[:per] || 10)
+    render :json => {status: :ok}
   end
 
   def show

@@ -1,0 +1,2 @@
+class ActivityPrice < ApplicationRecord
+end

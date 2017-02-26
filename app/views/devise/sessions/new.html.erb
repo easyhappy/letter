@@ -8,7 +8,7 @@
           <h3 class="panel-title">请您先登录</h3>
         </div>
         <div class="panel-body">
-          <%= form_for(resource, as: resource_name, url: user_session_path) do |f| %>
+          <%= form_for(resource, as: resource_name, url: admin_user_session_path) do |f| %>
             <div class="field form-group">
               <%= devise_error_messages! %>
             </div>
@@ -22,7 +22,7 @@
               <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
             </div>
 
-            <span class="pull-right">未注册, 请<%= link_to "注册", new_user_registration_path %></span>
+            <span class="pull-right">未注册, 请<%= link_to "注册", new_admin_user_registration_path %></span>
             <div class="actions">
               <%= f.submit "登录", class: "btn btn-lg btn-success btn-block" %>
             </div>
