@@ -34,15 +34,25 @@
   <body>
     <div class="navbar -dark -fixed-top -has-5-items">
       <div class="navbar-wrapper">
-        <a class="navbar-brand" href="index.html"><span class="hidden-sm-up">V</span> <span class="hidden-xs-down">VOLTA</span></a>
-        <ul class="navbar-nav -right">
-          <li>
-            <a href="signup.html" data-toggle="tooltip" data-placement="bottom" title="Sign Up"><i class="pe pe-plus"></i></a>
-          </li>
-          <li>
-            <a href="signin.html" data-toggle="tooltip" data-placement="bottom" title="Sign In"><i class="pe pe-angle-right-circle"></i></a>
-          </li>
-        </ul>
+        <a class="navbar-brand" href="index.html"><span class="hidden-sm-up">J</span> <span class="hidden-xs-down">Joysee</span></a>
+        <% if current_user %>
+          <ul class="navbar-nav -right">
+            <li>
+              <a class="has-morph-dropdown" href="#notifications-dropdown"><i class="pe pe-bell"></i> <span class="navbar-item-count">2</span></a>
+            </li>
+            <li>
+              <a class="has-morph-dropdown" href="#applications-dropdown"><i class="pe pe-keypad"></i></a>
+            </li>
+            <li class="navbar-profile">
+              <a class="has-morph-dropdown" href="#profile-dropdown">
+              <!-- Image -->
+               <img src="assets/img/users/default.jpg"></a>
+            </li>
+            <li id="right-sidebar-toggle">
+              <a href="javascript:void(0);"><i class="pe pe-edit -rotate-90"></i></a>
+            </li>
+          </ul>
+        <% end %>
         <div class="morph-dropdown-wrapper -dark -right">
           <div class="morph-dropdown-list -links"></div>
         </div>

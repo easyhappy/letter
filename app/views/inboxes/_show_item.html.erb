@@ -3,7 +3,7 @@
     <% if current_user.id == message.user_id %>
       我:
     <% else %>
-      <%= message.user.username %>:
+      <%= message.user.name %>:
     <% end %>
   </div>
   <div class="inbox-item-body">

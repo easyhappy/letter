@@ -4,11 +4,11 @@
     <% if lastest_message and current_user.id == lastest_message.user_id %>
       我发送给
       <a title="" class="pm-touser author-link" href="javascript:void(0)">
-        <%= inbox.friend.username %>
+        <%= inbox.friend.name %>
       </a>
     <% else %>
       <a title="" class="pm-touser author-link" href="javascript:void(0)">
-        <%= inbox.friend.username %>
+        <%= inbox.friend.name %>
       </a>
       发送给我
     <% end %>

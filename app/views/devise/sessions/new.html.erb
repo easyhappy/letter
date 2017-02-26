@@ -1,16 +1,16 @@
 <div class="panel -dark -focused">
   <div class="panel-heading -dark -with-icon-lg">
     <i class="pe pe-angle-right-circle"></i>
-    <h3>登录</h3>
+    <h3>登录</h3><span>Joysee管理后台, 如有问题, 请联系管理员</span>
   </div>
   <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: admin_user_session_path, html: {class: "-dark form", id: "form-signin"}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: user_session_path, html: {class: "-dark form", id: "form-signin"}) do |f| %>
       <div class="field form-group">
         <%= devise_error_messages! %>
       </div>
       <div class="field form-group">
         <%= f.label "用户名" %><br />
-        <%= f.text_field :username, autofocus: true, class: "form-control" %>
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
       </div>
 
       <div class="field form-group">
@@ -23,4 +23,4 @@
       </div>
     <% end %>
   </div>
-</div>
+</div>  

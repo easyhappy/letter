@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
   def create
-    friend = User.find_by username: params[:username]
+    friend = User.find_by name: params[:name]
     status, @message = current_user.send_message friend, params[:content]
 
     if status
