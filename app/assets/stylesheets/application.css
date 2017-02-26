@@ -10,31 +10,6 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require bootstrap
- *= require bootstrap_and_overrides
  *= require_self
+ *= require_tree
  */
-
-
-.main-content{
-  width: 80%;
-  margin-left: 10%;
-  margin-top: 20px;
-}
-
-body {
-  background: #e9eaed;
-  color: #222527;
-}
-
-#wrapper .navbar .navbar-header{
-  float: none;
-  width: 955px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.inbox-center-navbar i.fa-comment{
-  color: red;
-  display: none;
-}
