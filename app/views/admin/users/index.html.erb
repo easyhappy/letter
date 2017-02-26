@@ -1,0 +1,30 @@
+<div class="panel -dark">
+        <!-- Panel Heading -->
+  <div class="panel-heading">
+    <h4>Data Table</h4>
+  </div>
+  <!-- /Panel Heading -->
+  <div class="form -dark">
+    <table class="table -dark" id="datatable">
+      <thead>
+        <tr>
+          <th>Neon Id</th>
+          <th>昵称</th>
+          <th>头像</th>
+          <th>注册时间</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td class="-valign-middle"><%= user.name %></td>
+            <td class="-user -detailed"><%= user.nickname %></td>
+            <td class="-user -detailed"><%= image_tag user.avatar_url %></td>
+            <td class="-user -detailed"><%= user.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
