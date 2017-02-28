@@ -38,6 +38,7 @@ gem 'devise', "~> 4.0.3"
 
 gem 'redis'
 gem 'hiredis'
+gem "redis-rails"
 # Redis 命名空间
 gem 'redis-namespace'
 gem 'redis-activesupport'

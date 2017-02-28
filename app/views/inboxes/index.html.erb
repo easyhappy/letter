@@ -1,9 +1,0 @@
-<%= stylesheet_link_tag    'inboxes', media: 'all', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'inboxes', 'data-turbolinks-track' => true, "defer" => "defer" %>
-
-<div class="inbox-list main-content">
-  <% @inboxes.each do |inbox| %>
-    <%= render "inbox_item", inbox: inbox %>
-  <% end %>
-  <%= will_paginate @inboxes %>
-</div> 

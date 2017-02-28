@@ -10361,7 +10361,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"bLengthChange": true,
+		"bLengthChange": false,
 
 
 		/**

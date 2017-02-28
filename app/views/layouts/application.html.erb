@@ -58,7 +58,9 @@
       </div>
     </div>
   </div>
-  <%= render "layouts/sidebar" %>
+  <% if current_user %>
+    <%= render "layouts/sidebar" %>
+  <% end %>
   <div class="content -dark -with-left-sidebar -collapsible">
     <div class="container-fluid">
       <div class="row">
