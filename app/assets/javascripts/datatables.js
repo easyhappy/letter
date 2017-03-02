@@ -4280,7 +4280,7 @@
 		}
 
 		/* Tell the draw function we have been filtering */
-		oSettings.bFiltered = true;
+		oSettings.bFiltered = false;
 		_fnCallbackFire( oSettings, null, 'search', [oSettings] );
 	}
 
@@ -4362,6 +4362,9 @@
 	 */
 	function _fnFilter( settings, input, force, regex, smart, caseInsensitive )
 	{
+		// 放弃 本地搜索
+		return
+
 		var rpSearch = _fnFilterCreateSearch( input, regex, smart, caseInsensitive );
 		var prevSearch = settings.oPreviousSearch.sSearch;
 		var displayMaster = settings.aiDisplayMaster;
