@@ -31,6 +31,18 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<style type="text/css">
+  div#datatable_filter {
+    float: right;
+  }
+  div.dataTables_wrapper div.dataTables_filter {
+    display: inline-flex;
+  }
+  div#datatable_filter .btn-list > .btn, .btn-list > .btn-group{
+    width: 80px;
+    margin-left: 5px;
+  }
+</style>
 <body>
   <div class="navbar -dark -fixed-top -has-5-items">
     <div class="navbar-wrapper">
