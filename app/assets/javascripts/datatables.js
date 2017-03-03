@@ -4151,6 +4151,7 @@
 	 */
 	function _fnFeatureHtmlFilter ( settings )
 	{
+
 		var classes = settings.oClasses;
 		var tableId = settings.sTableId;
 		var language = settings.oLanguage;
@@ -4175,6 +4176,7 @@
 			var val = !this.value ? "" : this.value; // mental IE8 fix :-(
 
 			/* Now do the filter */
+			return
 			if ( val != previousSearch.sSearch ) {
 				_fnFilterComplete( settings, {
 					"sSearch": val,
