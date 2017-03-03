@@ -1,12 +1,3 @@
-<% if @has_search%>
-  <script type="text/javascript">
-    window.has_search = true
-  </script>
-<% else %>
-  <script type="text/javascript">
-    window.has_search = false
-  </script>
-<% end %>
 <script type="text/javascript">
   // page: 11024
   var oTable = $('#datatable').dataTable({"pagingType": "full_numbers", "tabIndex": 2, "language": {
@@ -16,9 +7,9 @@
              },
           "info": " ",
           "infoEmpty": " ",
-          "searchPlaceholder": "NeonId或昵称"
+          //"searchPlaceholder": "NeonId或昵称"
            },
-           "searching": window.has_search
+           "searching": $("#datatable").attr("data-has-search") == "true"
          });
 
  if(window.has_search){

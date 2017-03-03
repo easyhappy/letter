@@ -5,7 +5,7 @@
   </div>
   <!-- /Panel Heading -->
   <div class="form -dark">
-    <table class="table -dark" id="datatable" data-url="<%= request.path %>" data-keyword="<%= params['key']%>" data-total-page="<%= params['total_page'] %>" data-current-page="<%= params['page'] %>" >
+    <table class="table -dark" id="datatable" data-url="<%= request.path %>" data-keyword="<%= params['key']%>" data-total-page="<%= params['total_page'] %>" data-current-page="<%= params['page'] %>" data-has-search="<%= @has_search%>" >
       <thead>
         <tr>
           <th>Neon Id</th>
