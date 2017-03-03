@@ -8,19 +8,15 @@
     <table class="table -dark" id="datatable" data-url="<%= request.path %>" data-keyword="<%= params['key']%>" data-total-page="<%= params['total_page'] %>" data-current-page="<%= params['page'] %>" >
       <thead>
         <tr>
-          <th>Neon Id</th>
-          <th>昵称</th>
-          <th>头像</th>
-          <th>注册时间</th>
+          <th>标题</th>
+          <th>创建时间</th>
         </tr>
       </thead>
       <tbody>
-        <% @users.each do |user| %>
+        <% @activities.each do |activity| %>
           <tr>
-            <td class=><%= user.name %></td>
-            <td class="-user -detailed"><%= user.nickname %></td>
-            <td class="-user -detailed"><a href="#"><%= image_tag user.avatar_url %></a></td>
-            <td class="-user -detailed"><%= user.created_at %></td>
+            <td class=><%= activity.title %></td>
+            <td class="-user -detailed"><%= activity.created_at %></td>
           </tr>
         <% end %>
       </tbody>

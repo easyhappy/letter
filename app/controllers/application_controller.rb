@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def per_page
+    10
+  end
+
   def after_sign_in_path_for user
     "/admin"
   end
