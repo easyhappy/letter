@@ -15,17 +15,9 @@
               </li>
             </ul>
           </li>
-          <li class="active">
-            <a href="#1"><i class="pe pe-box2"></i> <span>活动</span> <span class="fa arrow"></span></a>
-            <ul>
-              <li>
-                <a href="/admin/activities"><span>活动列表</span></a>
-              </li>
-              <li class="-active">
-                <a href="/admin/activities" ><span>活动列表</span></a>
-              </li>
-            </ul>
-          </li>
+          <%= sidebar_li("活动") do %>
+            <%= sidebar_child_li("活动列表", "/admin/activities")%>
+          <% end %>
           <li>
               <a href="#2"><i class="pe pe-note"></i> <span>Forms</span> <span class="fa arrow"></span></a>
               <ul>
