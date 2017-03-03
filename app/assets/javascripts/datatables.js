@@ -454,7 +454,7 @@
 		 *      oTable.fnFilter( 'test string' );
 		 *    } );
 		 */
-		this.fnFilter = function( sInput, iColumn, bRegex, bSmart, bShowGlobal, bCaseInsensitive )
+		this._fnFilter = function( sInput, iColumn, bRegex, bSmart, bShowGlobal, bCaseInsensitive )
 		{
 			var api = this.api( true );
 
@@ -4239,6 +4239,7 @@
 	 */
 	function _fnFilterComplete ( oSettings, oInput, iForce )
 	{
+		return
 		var oPrevSearch = oSettings.oPreviousSearch;
 		var aoPrevSearch = oSettings.aoPreSearchCols;
 		var fnSaveFilter = function ( oFilter ) {
@@ -6070,6 +6071,7 @@
 	 */
 	function _fnSortListener ( settings, colIdx, append, callback )
 	{
+		return
 		var col = settings.aoColumns[ colIdx ];
 		var sorting = settings.aaSorting;
 		var asSorting = col.asSorting;
@@ -7523,6 +7525,7 @@
 
 	var __reload = function ( settings, holdPosition, callback ) {
 		// Use the draw event to trigger a callback
+		return
 		if ( callback ) {
 			var api = new _Api( settings );
 
@@ -8961,6 +8964,7 @@
 
 
 	_api_register( 'search()', function ( input, regex, smart, caseInsen ) {
+		return
 		var ctx = this.context;
 
 		if ( input === undefined ) {
@@ -8990,6 +8994,7 @@
 		'columns().search()',
 		'column().search()',
 		function ( input, regex, smart, caseInsen ) {
+			return
 			return this.iterator( 'column', function ( settings, column ) {
 				var preSearch = settings.aoPreSearchCols;
 

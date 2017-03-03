@@ -17,6 +17,7 @@ gem 'therubyracer', platforms: :ruby
 gem "less-rails", "~> 2.7.1"
 gem "twitter-bootstrap-rails", "~> 3.2.2"
 gem 'will_paginate'
+gem  "ransack"
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 
