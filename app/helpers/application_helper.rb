@@ -21,14 +21,21 @@ module ApplicationHelper
   end
 
   def sidebar_child_li(text, link, active_links=[])
+    uri = URI(URI.encode(link))
     if active_links.present?
       klass = ""
       active_links.each do |active_link|
         klass = "-active" and break if request.path =~ %r{#{URI.escape(active_link)}}
       end
     else
-
-      klass = request.path =~ %r{#{URI.escape(link)}} ? "-active" : ""
+      klass = request.path =~ %r{#{URI.escape(uri.path)}} ? "-active" : ""
+    end
+    if klass == "-active"
+      if params[:type].present? and !uri.query.to_s.include?("type=#{params[:type]}")
+        klass = ""
+      elsif params[:type].blank? and uri.query.to_s.include?("type=#{params[:type]}")
+        klass = ""
+      end
     end
     @active_sidebar_li ||= "active" if klass == "-active"
     content_tag :li, class: klass do
