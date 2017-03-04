@@ -1,0 +1,27 @@
+<div class="panel -dark">
+        <!-- Panel Heading -->
+  <div class="panel-heading">
+    <h4>国家列表</h4>
+  </div>
+  <!-- /Panel Heading -->
+  <div class="form -dark">
+    <table class="table -dark" id="datatable" data-url="<%= request.path %>" data-keyword="<%= params['key']%>" data-total-page="<%= params['total_page'] %>" data-current-page="<%= params['page'] %>" data-has-search="<%= @has_search%>" >
+      <thead>
+        <tr>
+          <th>国家</th>
+          <th>省份数</th>
+          <th>城市数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @countries.each do |country| %>
+          <tr>
+            <td class=><%= country.name %></td>
+            <td class=><%= link_to country.provinces.count, "/admin/provinces?country_id=#{country.id}" %></td>
+            <td class=><%= link_to country.cities.count, "/admin/cities?country_id=#{country.id}" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

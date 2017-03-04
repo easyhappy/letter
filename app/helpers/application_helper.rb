@@ -9,10 +9,10 @@ module ApplicationHelper
     child_lis = capture do
       yield
     end
-
+    icon = options[:icon] || 'pe-box2'
     content_tag :li, class: @active_sidebar_li do
       link_to("#", :'aria-haspopup' => true, :'aria-expanded' => true, :'data-toggle' => 'dropdown') do
-        "<i class='pe pe-box2'></i> <span>#{li_title}</span> <span class='fa arrow'></span>".html_safe
+        "<i class='pe #{icon}'></i> <span>#{li_title}</span> <span class='fa arrow'></span>".html_safe
       end + 
       content_tag(:ul) do
         child_lis

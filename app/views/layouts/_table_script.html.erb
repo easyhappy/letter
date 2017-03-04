@@ -12,15 +12,16 @@
            "searching": $("#datatable").attr("data-has-search") == "true"
          });
 
- if(window.has_search){
-  $("#datatable_filter").append("<div class='btn-list'><a class='btn -success search-btn' href='#'>确定</a></div>")
- }
  var table = $('#datatable')
  var keyword = table.attr("data-keyword")
  var base_path = table.attr("data-url")
  var total_page = parseInt(table.attr("data-total-page"))
  var current_page = parseInt(table.attr("data-current-page"))
- //oTable.fnFilter(keyword);
+
+ if($("#datatable").attr("data-has-search") == "true"){
+   $("#datatable_filter").append("<div class='btn-list'><a class='btn -success search-btn' href='#'>确定</a></div>")
+   $("#datatable_filter input").val(table.attr("data-keyword"))
+ }
  $("#datatable_paginate .-active a").html(current_page)
  if( current_page == 1){
       $("#datatable_first a").hide()
@@ -62,7 +63,7 @@
     })
  }
 
- if(window.has_search){
+ if($("#datatable").attr("data-has-search") == "true"){
    $("#datatable_filter .search-btn").click(function(){
       var key = $("#datatable_filter input").val()
       window.location.href = base_path + "?key=" + key

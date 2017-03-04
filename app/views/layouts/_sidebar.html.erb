@@ -7,41 +7,18 @@
           <li class="">
             <a href="/admin"><i class="pe pe-home"></i> <span>Dashboard</span></a>
           </li>
-          <li>
-            <a href="/admin"><i class="pe pe-box2"></i> <span>用户</span> <span class="fa arrow"></span></a>
-            <ul>
-              <li>
-                <a href="/admin/users"><span>用户列表</span></a>
-              </li>
-            </ul>
-          </li>
+          <%= sidebar_li("用户") do %>
+            <%= sidebar_child_li("用户列表", "/admin/users") %>
+          <% end %>
           <%= sidebar_li("活动") do %>
             <%= sidebar_child_li("全部列表", "/admin/activities") %>
             <%= sidebar_child_li("已结束列表", "/admin/activities?type=finished") %>
           <% end %>
-          <li>
-              <a href="#2"><i class="pe pe-note"></i> <span>Forms</span> <span class="fa arrow"></span></a>
-              <ul>
-                <li>
-                  <a href="forms-elements.html">Elements</a>
-                </li>
-                <li>
-                  <a href="forms-validation.html">Validation</a>
-                </li>
-                <li>
-                  <a href="forms-wizard.html">Wizard</a>
-                </li>
-                <li>
-                  <a href="forms-input-masks.html">Input Masks</a>
-                </li>
-                <li>
-                  <a href="forms-wysiwyg.html">WYSIWYG Editor</a>
-                </li>
-                <li>
-                  <a href="forms-multi-upload.html">Multi Upload</a>
-                </li>
-              </ul>
-            </li>
+          <%= sidebar_li("省、市", {icon: "pe-note"}) do %>
+            <%= sidebar_child_li("国家列表", "/admin/countries") %>
+            <%= sidebar_child_li("省份列表", "/admin/provinces") %>
+            <%= sidebar_child_li("城市列表", "/admin/cities") %>
+          <% end %>
         </ul>
       </div>
     </div>
