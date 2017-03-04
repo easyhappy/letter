@@ -2,7 +2,7 @@
 lock '3.5.0'
 
 set :application, 'yuejian'
-set :repo_url, 'git@git.coding.net:andyhu/yuejian.git'
+set :repo_url, 'git@git.coding.net:andyhu/letter.git'
 set :deploy_to, '/home/deployer/apps/yuejian'
 set :deploy_user, :deployer
 
