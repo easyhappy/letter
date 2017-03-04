@@ -4,7 +4,7 @@
     <h3>登录</h3><span>Joysee管理后台, 如有问题, 请联系管理员</span>
   </div>
   <div class="panel-body">
-    <%= form_for(resource, as: resource_name, url: user_session_path, html: {class: "-dark form", id: "form-signin"}) do |f| %>
+    <%= form_for(resource, as: resource_name, url: admin_user_session_path, html: {class: "-dark form", id: "form-signin"}) do |f| %>
       <div class="field form-group">
         <%= devise_error_messages! %>
       </div>
