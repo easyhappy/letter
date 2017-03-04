@@ -5,12 +5,17 @@ module ApplicationHelper
   end
 
   def sidebar_li(li_title, options={})
-    content_tag :li do
-      link_to("#", :'aria-haspopup' => true, :'aria-expanded' => false, :'data-toggle' => 'dropdown') do
+    @active_sidebar_li = nil
+    child_lis = capture do
+      yield
+    end
+
+    content_tag :li, class: @active_sidebar_li do
+      link_to("#", :'aria-haspopup' => true, :'aria-expanded' => true, :'data-toggle' => 'dropdown') do
         "<i class='pe pe-box2'></i> <span>#{li_title}</span> <span class='fa arrow'></span>".html_safe
       end + 
-      content_tag(:ul, class: 'dropdown-menu') do
-        yield
+      content_tag(:ul) do
+        child_lis
       end
     end
   end
@@ -19,15 +24,15 @@ module ApplicationHelper
     if active_links.present?
       klass = ""
       active_links.each do |active_link|
-        klass = "active" and break if request.path =~ %r{#{URI.escape(active_link)}}
+        klass = "-active" and break if request.path =~ %r{#{URI.escape(active_link)}}
       end
     else
-      klass = request.path =~ %r{#{URI.escape(link)}} ? "active" : ""
+
+      klass = request.path =~ %r{#{URI.escape(link)}} ? "-active" : ""
     end
+    @active_sidebar_li ||= "active" if klass == "-active"
     content_tag :li, class: klass do
-      content_tag :span do
-        link_to text, link
-      end
+      link_to text, link
     end
   end
 end
